@@ -6,5 +6,6 @@ target 'RealmToDoListInformaticsProject' do
   use_frameworks!
 
 pod 'RealmSwift'
+pod 'SVProgressHUD'
 
 end
