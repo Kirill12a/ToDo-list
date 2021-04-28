@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
 
 //    print(Realm.Configuration.defaultConfiguration.fileURL)
     // чтобы узнать где наша бд
+    //
+    //
 
 }
 
