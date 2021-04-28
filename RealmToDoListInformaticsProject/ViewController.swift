@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     }
 
 //    print(Realm.Configuration.defaultConfiguration.fileURL)
+    // чтобы узнать где наша бд
 
 }
 
