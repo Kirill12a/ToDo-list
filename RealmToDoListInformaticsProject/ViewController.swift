@@ -8,17 +8,62 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
+    
+    
+    var items: Results<Item>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let realm = try! Realm()
+        self.items = realm.objects(Item.self)
+ 
+//        print(Realm.Configuration.defaultConfiguration.fileURL)
     }
 
-//    print(Realm.Configuration.defaultConfiguration.fileURL)
-    // чтобы узнать где наша бд
-    //
-    //
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+        }
+        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let item = self.items[indexPath.row]
+        let naem = "\(item.name), id \(item.id)"
+        cell.textLabel?.text = naem
+         
+        return cell
+        }
+        
+    @IBAction func addAction(_ sender: Any) {
+        let item = Item()
+        item.id = self.items.count + 1
+        item.name = "Item\(self.items.count + 1)"
+        let realm = try! Realm()
+        try! realm.write{
+            realm.add(item)
+        }
 
+        self.tableView.reloadData()
+    }
+    @IBAction func additAction(_ sender: Any) {
+        let edit = !self.tableView.isEditing
+        self.tableView.setEditing(edit, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            let realm = try! Realm()
+            let item = self.items[indexPath.row]
+        
+            try! realm.write{
+                realm.delete(item)
+            }
+    
+            self.tableView.reloadData()
+        }
+    }
 }
+
+
 
