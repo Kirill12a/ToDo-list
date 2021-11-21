@@ -1,7 +1,4 @@
-//
-//  ViewController.swift
-//  RealmToDoListInformaticsProject
-//
+
 //  Created by Kirill Drozdov on 28.04.2021.
 //
 
@@ -19,8 +16,7 @@ class ViewController: UITableViewController {
         
         let realm = try! Realm()
         self.items = realm.objects(Item.self)
- 
-// print(Realm.Configuration.defaultConfiguration.fileURL)
+    
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,11 +32,15 @@ class ViewController: UITableViewController {
         return cell
         }
         
+    
+    
+    /// Добавил кноку добавить на экран и добавил алерт контролер на при на нажатие на эту кнопку
+    /// - Parameter sender: Кнопка
     @IBAction func addAction(_ sender: Any) {
-        
+        sleep(2)
         //Alert
         let alr = UIAlertController(title: "Push", message: "New", preferredStyle: .actionSheet)
-        alr.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+      alr.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             print("Ты нажал Yse")
         }))
         alr.addAction(UIAlertAction(title: "No", style: .default, handler: nil))

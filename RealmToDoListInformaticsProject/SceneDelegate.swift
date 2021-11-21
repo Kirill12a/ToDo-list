@@ -1,5 +1,4 @@
-//
-//  SceneDelegate.swift
+
 //  RealmToDoListInformaticsProject
 //
 //  Created by Kirill Drozdov on 28.04.2021.
