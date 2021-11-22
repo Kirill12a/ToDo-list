@@ -32,8 +32,6 @@ class ViewController: UITableViewController {
         return cell
         }
         
-    
-    
     /// Добавил кноку добавить на экран и добавил алерт контролер на при на нажатие на эту кнопку
     /// - Parameter sender: Кнопка
     @IBAction func addAction(_ sender: Any) {
@@ -46,10 +44,7 @@ class ViewController: UITableViewController {
         alr.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         present(alr, animated: true)
         //\Alert
-        
-    
-    
-        
+ 
         let item = Item()
         item.surname = "\(self.items.count + 1)"
         item.id = self.items.count + 1
@@ -59,7 +54,6 @@ class ViewController: UITableViewController {
         try! realm.write{
             realm.add(item)
         }
-
         self.tableView.reloadData()
     }
     @IBAction func additAction(_ sender: Any) {
@@ -75,7 +69,6 @@ class ViewController: UITableViewController {
             try! realm.write{
                 realm.delete(item)
             }
-    
             self.tableView.reloadData()
         }
     }
